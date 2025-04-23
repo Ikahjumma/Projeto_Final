@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .app {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    transition: all 0.3s ease;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+
+  p {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: #FF4B2B;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #FF4B2B;
+  }
+
+  /* Responsividade com CSS */
+  @media (max-width: 600px) {
+    #app {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 22px;
+    }
+  }
+
+  /* Classe para telas pequenas (via JS) */
+  .mobile-view {
+    background-color: #e8f0ff;
+  }
+
+
+  /*style do botão de resultado*/
+
+  .resultado-box {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-left: 5px solid #FF4B2B;
+    border-radius: 5px;
+}
+
+.resultado {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF4B2B;
+}

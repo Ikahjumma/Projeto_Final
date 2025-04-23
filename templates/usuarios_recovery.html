@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+</head>
+<body>
+    <ul>
+        <!--read-->
+        {% for u in usuarios %} <!--para cada usuario para a variavel de usuario, cria um item lista -->
+
+        <li>{{u.nome}} - 
+            <a href="/update/{{u.id}}">Editar</a></li>
+            <a href="/delete/{{u.id}}">Excluir</a>
+        <li>{{u.email}}</li>
+        
+        {% endfor %}
+    </ul>
+</body>
+</html>

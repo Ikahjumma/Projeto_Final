@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/c.css">
+    <title>Alteração do Usuário</title>
+</head>
+<body>
+    <div class="cadastro">
+        <form method="post" action="/update/{{u.id}}" class="cadastro">
+            <h1>Alterar conta</h1>
+            <!--O placeholder é um texto temporário exibido em um campo de entrada, fornecendo uma dica ou exemplo sobre o que o usuário deve digitar-->
+            <input type="text" name="nome" value="{{u.nome}}"
+            placeholder="Nome" required> 
+            <input type="email" name="email" value="{{u.email}}"placeholder="Email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+			<button type="submit">Atualizar Cadastro</button>
+        </form>
+    </div></body>
+</html>

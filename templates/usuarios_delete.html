@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Cadastro de Usuário</title>
+</head>
+<body>
+    <h1>Você tem certeza que deseja excluir o usuario {{u.nome}}? </h1>
+
+    <form method="post" action="/delete/{{u.id}}">
+        <input type="submit" value="Sim">
+    </form>
+    <a href="/recovery">Cancelar</a>
+</body>
+</html>
