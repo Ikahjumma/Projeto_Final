@@ -1,6 +1,7 @@
 #deixar as rotas no main
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_migrate import Migrate
+from flask import session #para salvar o id do usuario e garantir a questão do login para ver o resultado da previsão
 from usuario import bp_usuarios
 from database import db
 #para a previsão
@@ -60,6 +61,8 @@ def previsao():
 #ROTA PARA PREVISÃO
 @app.route('/prever_consumo', methods=['GET','POST'])
 def prever_consumo():
+    if 'usuario_id' not in session:
+        return redirect('/usuarios/usuario')  # Redireciona para login se não estiver logado
     
     try:
         tipo = int(request.form['tipo_construcao'])
@@ -114,4 +117,8 @@ modelo_regressao = LinearRegression().fit(x, y)
 @app.route('/previsao', methods=['GET'])
 def previsao():
     return render_template("index_previsao.html")
+
+
+
+
 

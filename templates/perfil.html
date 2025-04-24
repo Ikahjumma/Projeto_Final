@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="/static/perfil.css">
+</head>
+<body>
+  <div class="app">
+    <h1>👤 Perfil do Usuário</h1>
+
+    <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+
+    <hr>
+
+    <h3>Ações</h3>
+    <p><a href="{{ url_for('usuarios.update', id=usuario.id) }}">✏️ Editar Dados</a></p>
+    <p><a href="{{ url_for('usuarios.redefinir_senha') }}">🔐 Redefinir Senha</a></p>
+    <p><a href="{{ url_for('usuarios.logout') }}">🚪 Sair</a></p>
+
+    <p>
+        <form method="POST" action="/usuarios/deletar_meu_usuario" onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
+          <button class="danger-button">🗑️ Excluir Conta</button>
+        </form>
+      </p>
+
+    <p><a href="{{ url_for('previsao') }}">← Voltar para previsão</a></p>
+  </div>
+</body>
+</html>

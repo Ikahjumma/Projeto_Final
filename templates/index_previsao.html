@@ -8,6 +8,14 @@
 </head>
 <body>
     <div class="app">
+      <nav class="navbar">
+        {% if session.usuario_id %}
+          <a href="{{ url_for('usuarios.perfil') }}">👤 Meu Perfil</a>
+          <a href="{{ url_for('usuarios.logout') }}">🚪 Sair</a>
+        {% else %}
+          <a href="{{ url_for('usuarios.login') }}">🔐 Login</a>
+        {% endif %}
+      </nav>
         <h1>Previsão gasto de energia</h1>
         <p>
           Para saber quanto você gasta de energia, preencha os campos abaixo:
@@ -52,9 +60,17 @@
             <p class="resultado">{{ resultado }}</p>
           </div>
         {% endif %}
-        
-    </form>
-    </div>
+
+        <!--verificar se tá logado-->
+        {% if session.usuario_id %}
+          <!-- mostra o formulário -->
+        {% else %}
+          <p>Você precisa estar <a href="{{ url_for('usuarios.login') }}">logado</a> para ver a previsão.</p>
+        {% endif %}
+      </div>
+    
+
+
              <!--Vlibra inicio-->
              <div vw class="enabled">
                 <div vw-access-button class="active"></div>
@@ -67,6 +83,7 @@
                 new window.VLibras.Widget('https://vlibras.gov.br/app');
               </script>
             <!--Vlibra Fim-->
-    <script src="index.js"></script>
+            
+            <script src="index.js"></script>
 </body>
 </html>
