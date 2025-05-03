@@ -21,8 +21,14 @@ conexao = "sqlite:///meubanco.sqlite"
 app.config['SECRET_KEY'] = 'teste'
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
 
+
+# Sessão expira quando o navegador fecha
+app.config['SESSION_PERMANENT'] = False
+
 #evita alerta sobre alterações no banco de dados
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
 
 db.init_app(app) #comando para executar 
 # flask db init  => cria a pasta migrations

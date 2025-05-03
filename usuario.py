@@ -42,6 +42,7 @@ def login():
         usuario = Usuario.query.filter_by(email=email, senha=senha).first()
 
         if usuario:
+            session.permanent = False  
             session['usuario_id'] = usuario.id
             return redirect('/previsao')
         else:
