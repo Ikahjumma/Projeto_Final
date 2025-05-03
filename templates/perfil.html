@@ -24,8 +24,23 @@
           <button class="danger-button">🗑️ Excluir Conta</button>
         </form>
       </p>
-
-    <p><a href="{{ url_for('previsao') }}">← Voltar para previsão</a></p>
+      <p><a href="{{ url_for('previsao') }}">← Voltar para previsão</a></p>
   </div>
+
+  
+
+               <!--Vlibra inicio-->
+               <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                  <div class="vw-plugin-top-wrapper"></div>
+                </div>
+              </div>
+              <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+              <script>
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+              </script>
+            <!--Vlibra Fim-->
+            <script src="perfil.js"></script>
 </body>
 </html>

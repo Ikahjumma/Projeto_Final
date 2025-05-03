@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/c.css">
+    <link rel="stylesheet" href="/static/redefinir_senha-alterar-conta.css">
     <title>Alteração do Usuário</title>
 </head>
 <body>
     <div class="cadastro">
-        <form method="post" action="/update/{{u.id}}" class="cadastro">
-            <h1>Alterar conta</h1>
+        <form method="post" action="/usuarios/update/{{u.id}}" class="cadastro">
+            <h2>Alterar conta</h2>
             <!--O placeholder é um texto temporário exibido em um campo de entrada, fornecendo uma dica ou exemplo sobre o que o usuário deve digitar-->
             <input type="text" name="nome" value="{{u.nome}}"
             placeholder="Nome" required> 
@@ -17,5 +17,26 @@
             <input type="password" name="senha" placeholder="Senha" required>
 			<button type="submit">Atualizar Cadastro</button>
         </form>
-    </div></body>
+        <p><a href="{{ url_for('usuarios.perfil') }}">← Voltar para o Perfil</a></p>
+
+        <!--MENSAGEM SE NÃO ENCONTRAR O ARQUIVO-->
+        {% if mensagem %}
+            <p style="color: red;">{{ mensagem }}</p>
+        {% endif %}
+    </div>
+
+                 <!--Vlibra inicio-->
+                 <div vw class="enabled">
+                    <div vw-access-button class="active"></div>
+                    <div vw-plugin-wrapper>
+                      <div class="vw-plugin-top-wrapper"></div>
+                    </div>
+                  </div>
+                  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                  <script>
+                    new window.VLibras.Widget('https://vlibras.gov.br/app');
+                  </script>
+                <!--Vlibra Fim-->
+    
+</body>
 </html>

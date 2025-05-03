@@ -1,5 +1,5 @@
 from flask import Blueprint #permite exchergar outras rotas
-from flask import Flask, render_template, request, redirect
+from flask import render_template, request, redirect
 from models import Usuario #classe da estrutura do usuario
 from database import db
 from flask import session
@@ -10,9 +10,6 @@ bp_usuarios = Blueprint("usuarios", __name__, template_folder="templates") #busc
 #criar usuario
 @bp_usuarios.route('/usuarios', methods=['GET', 'POST'])
 def usuario():
-    if request.method == 'GET':
-        return render_template('usuario.html')
-    
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
@@ -83,15 +80,18 @@ def redefinir_senha():
 
 
 #ver os usuario o read    
-@bp_usuarios.route('recovery')
-def recovery():
-    usuarios = Usuario.query.all() #recuperar todos os objetos, registros que existem na tabela
-    return render_template('usuarios_recovery.html', usuarios = usuarios)
+#@bp_usuarios.route('/recovery')
+#def recovery():
+#    usuarios = Usuario.query.all() #recuperar todos os objetos, registros que existem na tabela
+#    return render_template('usuarios_recovery.html', usuarios = usuarios)
 
 #alteração de usuarios
 @bp_usuarios.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
     u = Usuario.query.get(id) #recuperar usuario
+    if not u:
+        mensagem = "Usuário não encontrado. Tente novamente."
+        return render_template('usuarios_update.html', mensagem=mensagem, u=None)
 
     if request.method == 'GET':
         return render_template ('usuarios_update.html', u = u)
@@ -99,12 +99,22 @@ def update(id):
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
+        
+        # Verificar se o novo e-mail já pertence a outro usuário
+        email_existente = Usuario.query.filter(Usuario.email == email, Usuario.id != u.id).first()
+        if email_existente:
+            mensagem = 'Este e-mail já está em uso por outro usuário.'
+            return render_template('usuarios_update.html', u=u, mensagem=mensagem)
+        
         u.nome = nome
         u.email = email
         #alterar os dados do usuario que tem o Id X
         db.session.add(u)
         db.session.commit()
-        return redirect('/recovery')
+        
+        return render_template('usuarios_update.html', u=u, mensagem='Alteração realizada com sucesso!')
+
+
 
 #deletar usuarios
 @bp_usuarios.route('/delete/<int:id>', methods=['GET', 'POST'])
@@ -134,7 +144,7 @@ def deletar_meu_usuario():
         db.session.delete(usuario)
         db.session.commit()
         session.pop('usuario_id', None)
-        return redirect('/')  # Volta pra página inicial ou uma página de despedida
+        return redirect('/')  # Volta pra página de previsão
 
     return "Usuário não encontrado", 404
 

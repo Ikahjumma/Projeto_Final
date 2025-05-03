@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/redefinir_senha.css">
+    <link rel="stylesheet" href="/static/redefinir_senha-alterar-conta.css">
     <title>Redefinição de Senha</title>
 </head>
 <body>
@@ -21,5 +21,18 @@
     {% if mensagem %}
         <p style="color: red;">{{ mensagem }}</p>
     {% endif %}
+
+                 <!--Vlibra inicio-->
+                 <div vw class="enabled">
+                    <div vw-access-button class="active"></div>
+                    <div vw-plugin-wrapper>
+                      <div class="vw-plugin-top-wrapper"></div>
+                    </div>
+                  </div>
+                  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                  <script>
+                    new window.VLibras.Widget('https://vlibras.gov.br/app');
+                  </script>
+                <!--Vlibra Fim-->
 </body>
 </html>

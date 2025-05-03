@@ -194,7 +194,7 @@ def entrada(x):
 
 
 # Chamando análises
-#entrada(xall)
+entrada(xall)
 analiseM(xall)
 analise1(x1)
 analise_comum(x2, 'área', "Área x Consumo", "Área", "Consumo de Energia")
@@ -204,3 +204,4 @@ analise_comum(x5,'temperatura_média', "Temperatura Média x Consumo", "Temperat
 analise6(x6)
 
 #ele provavelmente segmentou por número de aparelhos pq é um desvio padrão pequeno
+

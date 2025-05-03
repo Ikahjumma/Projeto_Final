@@ -1,3 +1,23 @@
+@media (max-width: 480px) {
+    .app {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
