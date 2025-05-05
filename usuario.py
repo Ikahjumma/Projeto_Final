@@ -73,7 +73,7 @@ def redefinir_senha():
         if usuario:
             usuario.senha = nova_senha
             db.session.commit()
-            return render_template('redefinir_senha.html', mensagem='Senha atualizada com sucesso!')
+            return render_template('usuario.html', mensagem='Senha atualizada com sucesso!')
         else:
             return render_template('redefinir_senha.html', mensagem='Email não encontrado.')
 
